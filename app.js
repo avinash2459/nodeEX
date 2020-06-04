@@ -12,6 +12,9 @@ let express = require("express");
 
 let app = express();
 
+let PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+let IP = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+
 app.get("/", (req, res) => {
   res.send("hello! welcome");
 });
@@ -20,6 +23,6 @@ app.get("/home", (req, res) => {
   res.send("hello! welcome");
 });
 
-app.listen("8080", (req, res) => {
-  console.log("Listening to the port 8080");
+app.listen(PORT, IP, (req, res) => {
+  console.log("Listening to the port 8080", PORT, IP);
 });
